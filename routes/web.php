@@ -9,3 +9,12 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('user.home');
 });
+
+Route::get('/category', function () {
+    return view('user.category');
+});
+
+Route::get('/dashboard', function () {
+    return view('admin.index');
+});
+

@@ -1,8 +1,7 @@
 
     {{-- Awal footer  --}}
-    <footer class="max-w-screen-xl bg-white dark:bg-gray-900 items-center justify-between mx-auto p-4 ">
-        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div class="sm:flex sm:items-center sm:justify-between">
+    <footer class="bg-white dark:bg-gray-900 items-center justify-between mx-auto p-4 ">
+        <div class="sm:flex sm:items-center sm:justify-between lg:mx-20">
             <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
             </span>
             <div class="flex mt-4 sm:justify-center sm:mt-0">
@@ -42,6 +41,6 @@
     </footer>
     {{-- Akhir footer  --}}
 
-
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>
 </html>
