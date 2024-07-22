@@ -30,7 +30,7 @@
     <div class="max-w-screen-xl my-5 items-center px-4 mx-auto  w-full grid grid-cols-4 gap-4">
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img class="rounded-t-lg" src="https://source.unsplash.com/random/?Cryptocurrency/" alt="" />
+                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg mx-auto" alt="Image 1">
             </a>
             <div class="p-5">
                 <a href="#">
@@ -45,9 +45,10 @@
                 </a>
             </div>
         </div>
+        
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img class="rounded-t-lg" src="https://source.unsplash.com/random/?Cryptocurrency/" alt="" />
+                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg mx-auto" alt="Image 1">
             </a>
             <div class="p-5">
                 <a href="#">
@@ -62,9 +63,10 @@
                 </a>
             </div>
         </div>
+        
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img class="rounded-t-lg" src="https://source.unsplash.com/random/?Cryptocurrency/" alt="" />
+                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg mx-auto" alt="Image 1">
             </a>
             <div class="p-5">
                 <a href="#">
@@ -79,9 +81,10 @@
                 </a>
             </div>
         </div>
+        
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
-                <img class="rounded-t-lg" src="https://source.unsplash.com/random/?Cryptocurrency/" alt="" />
+                <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg mx-auto" alt="Image 1">
             </a>
             <div class="p-5">
                 <a href="#">
@@ -96,6 +99,7 @@
                 </a>
             </div>
         </div>
+        
     </div>
 </section>
 

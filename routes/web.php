@@ -14,6 +14,10 @@ Route::get('/category', function () {
     return view('user.category');
 });
 
+Route::get('/news', function () {
+    return view('user.news');
+});
+
 Route::get('/dashboard', function () {
     return view('admin.index');
 });
