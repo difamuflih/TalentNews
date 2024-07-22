@@ -4,6 +4,14 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/index', function () {
+    return view('admin.index');
+});
+
+Route::get('/create', function () {
+    return view('admin.create');
+});
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
