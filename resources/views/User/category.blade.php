@@ -3,7 +3,7 @@
 <section class="bg-gray-100 dark:bg-gray-900 flex items-center">
     <div class="max-w-screen-xl px-4 mx-auto  w-full">
       <!-- Start coding here -->
-      <div class="dark:bg-gray-800 sm:rounded-lg">
+      <div class=" sm:rounded-lg">
           <div class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
             <div class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Education
@@ -24,10 +24,10 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
-<section class="">
-    <div class="max-w-screen-xl my-5 items-center px-4 mx-auto  w-full grid grid-cols-4 gap-4">
+<section class=" dark:bg-gray-900">
+    <div class="max-w-screen-xl items-center px-4 mx-auto  w-full grid grid-cols-4 gap-4">
         <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png" class="mb-5 rounded-lg mx-auto" alt="Image 1">
