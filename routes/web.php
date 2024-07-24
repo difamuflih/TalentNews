@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,6 +43,15 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('admin.dashboard');
     })->name('dashboard');
+    Route::get('/user', function () {
+        return view('admin.user');
+    })->name('user');
+    Route::get('/news', function () {
+        return view('admin.news');
+    })->name('news');
+    Route::get('/category', function () {
+        return view('admin.category');
+    })->name('category');
 });
