@@ -108,10 +108,11 @@
                         </thead>
                         <tbody>
                             <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <td class="px-4 py-3">1</td>
-                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Title of News</td>
-                                <td class="px-4 py-3">Education</td>
-                                <td class="px-4 py-3">12-12-12</td>
+                                <td class="px-4 py-3">{{ $loop->iteration }}</td>
+                                <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $news->title }}</td>
+                                <td class="px-4 py-3">{{ $news->category }}</td>
+                                <td class="px-4 py-3">{{ $news->created_at->diffForHumans() }}</td>
+                                {{-- $news->created_at->format('j F Y') --}}
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex items-center space-x-4">
                                         <button type="button" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" class="flex items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
