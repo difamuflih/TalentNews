@@ -12,16 +12,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class News extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','category','news','photo'];
+    protected $fillable = ['title','category_id','news','photo'];
 
-    public function category (): BelongsTo
+    public function categories (): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function creator (): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function comment (): HasMany

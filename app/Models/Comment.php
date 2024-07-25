@@ -15,11 +15,11 @@ class Comment extends Model
 
     public function news (): BelongsTo
     {
-        return $this->belongsTo(News::class);
+        return $this->belongsTo(News::class, 'news_id');
     }
 
     public function user (): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

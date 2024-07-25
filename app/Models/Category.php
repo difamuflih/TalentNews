@@ -11,7 +11,7 @@ class Category extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['category,icon'];
+    protected $fillable = ['category','icon','slug'];
 
     public function news (): HasMany
     {
