@@ -40,17 +40,17 @@ class RolePermissionSeeder extends Seeder
         
         $category = [[
             'category' => 'Sport',
-            'slug' => Str::slug('category'),
+            'slug' => Str::slug('Sport'),
             'about' => 'Kategori ini mencakup berita tentang pertandingan, turnamen, prestasi atlet, dan perkembangan terbaru dalam dunia olahraga.',
             'icon' => 'sport.jpg',
         ],[
             'category' => 'Education',
-            'slug' => Str::slug('category'),
+            'slug' => Str::slug('Education'),
             'about' => 'Kategori ini berfokus pada perkembangan pendidikan, kebijakan, inovasi pengajaran, beasiswa, dan teknologi pendidikan.',
             'icon' => 'education.jpg',
         ],[
             'category' => 'Economy',
-            'slug' => Str::slug('category'),
+            'slug' => Str::slug('Economy'),
             'about' => 'Kategori ini meliputi berita tentang kebijakan ekonomi, pasar saham, inflasi, perdagangan, dan tren ekonomi global.',
             'icon' => 'economy.jpg',
         ]];

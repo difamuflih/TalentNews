@@ -16,7 +16,7 @@
                 @else
                     <a
                         href="{{ route('login') }}"
-                        class="rounded-md bg-blue-500 px-3 py-2 text-white ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                        class="rounded-md border border-white bg-blue-600 px-3 py-2 text-white ring-1 ring-transparent transition hover:text-blue-600 hover:bg-white hover:border-blue-600 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                     >
                         Log in
                     </a>
@@ -48,18 +48,14 @@
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
                               
                               
-                                  
+                                @foreach ($categories as $category)
+                                    
                                 <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sport</a>
+                                    <a href="/categories/{{ $category->slug }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{ $category->category }}</a>
                                 </li>
-                                <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Education</a>
-                                </li>
-                                <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Economy</a>
-                                </li>
+                                
+                                @endforeach  
 
-                             
 
                             </ul>
                         </div>

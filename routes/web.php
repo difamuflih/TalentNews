@@ -13,16 +13,17 @@ use App\Http\Controllers\CategoryController;
 //     return view('user.news', ['news' => $news]);
 // });
 
-Route::get('/news/{slug}', [NewsController::class, 'show'])->name('user.news');
 Route::get('/', [NewsController::class, 'home'])->name('user.home');
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('user.news');
+Route::get('/categories/{slug}', [CategoryController::class, 'show'])->name('user.category');
 
 // Route::get('/', function () {
 //     return view('user.home');
 // });
 
-Route::get('/category', function () {
-    return view('category');
-});
+// Route::get('/category', function () {
+//     return view('category');
+// });
 
 // Route::get('/index', function () {
 //     return view('admin.index');

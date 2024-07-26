@@ -63,9 +63,20 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show($slug)
     {
-        //
+        // $categories = Category::where('slug', $slug)->with('news')->firstOrFail();
+        
+        // return view('user.category', compact('categories'));
+
+        // Temukan kategori berdasarkan slug
+        $categories = Category::where('slug', $slug)->firstOrFail();
+        
+        // Ambil semua berita terkait kategori ini
+        $newsItems = $categories->news()->orderBy('created_at', 'desc')->get();
+
+        // Kembalikan view dengan data kategori dan berita
+        return view('user.category', compact('categories', 'newsItems'));
     }
 
     public function home()
