@@ -4,14 +4,23 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CategoriesAdmin extends Component
 {
     use WithPagination;
 
-    public $item;
+    // public $category;
+    public $category = [
+        'name' => '',
+        'icon' => '',
+    ];
+
 
     public $confirmingCategoryAdd = false;
 
@@ -51,13 +60,38 @@ class CategoriesAdmin extends Component
             'icon' => $this->category['icon'],
         ]);
 
-        $this->confirmingCategoryAdd = false;
-
-        
+        $this->confirmingCategoryAdd = false;  
     }
 
+    public function store(Request $request)
+    {
+        //
+        $validated = $request->validate([
+        'category' => "Required|string|min:4",
+        'icon' => "Required|png,svg,jpg|min:4",
+        ]);
 
-    
+        DB::transaction();
 
+        try{
+            if($request->hasFile('icon')){
+                $iconPath = $request->file('icon')->strore('category_icons', 'public');
+                $validated['icon'] = $iconPath;
+            }
+            $validated['slug'] = Str::slug($request->category);
+            $newCategory = Category::create($validated);
+
+            DB::commit();
+
+            return redirect()->route('admin.category');
+        } catch(\Exception $e){
+            DB::rollBack();
+            $error = ValidationException::withMessages([
+                'system_error' => ['System error!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
+        
+    }
 
 }

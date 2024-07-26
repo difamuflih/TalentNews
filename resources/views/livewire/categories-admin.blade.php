@@ -77,10 +77,55 @@
                                             </svg>
                                             Delete
                                         </button>
+                                        <button wire:click="$set('confirmingCategoryAdd', true)" class="bg-blue-500 text-white px-4 py-2 rounded">
+                                            Tambah Kategori
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
+
+
+
+
+                            
+                                
+                            
+                                <!-- Modal Form Tambah Kategori -->
+                                @if($confirmingCategoryAdd)
+                                    <div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+                                        <div class="bg-white p-6 rounded-lg">
+                                            <h2 class="text-lg font-bold mb-4">Tambah Kategori Baru</h2>
+                            
+                                            <form wire:submit.prevent="saveCategory()">
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700">Nama Kategori:</label>
+                                                    <input type="text" wire:model="category.name" class="w-full px-4 py-2 border rounded">
+                                                    @error('category.name') <span class="text-red-500">{{ $message }}</span> @enderror
+                                                </div>
+                            
+                                                <div class="mb-4">
+                                                    <label class="block text-gray-700">Ikon:</label>
+                                                    <input type="text" wire:model="category.icon" class="w-full px-4 py-2 border rounded">
+                                                    @error('category.icon') <span class="text-red-500">{{ $message }}</span> @enderror
+                                                </div>
+                            
+                                                <div class="flex justify-end">
+                                                    <button type="button" wire:click="$set('confirmingCategoryAdd', false)" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">
+                                                        Batal
+                                                    </button>
+                                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
+                                                        Simpan
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                
+
+
 
                         </tbody>
                     </table>
@@ -164,7 +209,7 @@
                         <x-jet-input wire:model.defer='category.icon' type="file" name="icon" id="icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder="Upload icon" required="">
                     </div>  --}}
                 </div>
-                <button wire:click="saveCategory()" type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                <button wire:click="store()" type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                     <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                     </svg>

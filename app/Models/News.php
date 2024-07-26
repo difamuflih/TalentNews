@@ -19,7 +19,7 @@ class News extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function creator (): BelongsTo
+    public function users (): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }

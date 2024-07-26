@@ -68,6 +68,12 @@ class CategoryController extends Controller
         //
     }
 
+    public function home()
+    {
+        $categories = Category::all(); // Mendapatkan 5 berita terbaru
+
+        return view('user.home', compact('categories'));
+    }
     /**
      * Show the form for editing the specified resource.
      */

@@ -5,27 +5,29 @@
     
 <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
     <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
+        
         <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+            
+            <div class="mb-10">
+                <a href="#" rel="author" class="rounded-md p-3 bg-blue-500 dark:bg-white text-md font-bold dark:text-gray-900 text-white">{{ $news->categories->category }}</a>
+            </div>
             <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
             </figure>
+            
             <header class="mb-4 lg:mb-6 not-format">
-                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">Best practices for successful prototypes</h1>
+                <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $news->title }}</h1>
                 <address class="flex items-center mb-6 not-italic">
                     <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
                         <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="Jese Leos">
                         <div>
-                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">Jese Leos</a>
-                            <p class="text-base text-gray-500 dark:text-gray-400">Graphic Designer, educator & CEO Flowbite</p>
-                            <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate datetime="2022-02-08" title="February 8th, 2022">Feb. 8, 2022</time></p>
+                            <a href="#" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{  $news->users->pluck('name')->first() }}</a>
+                            
+                            <p class="text-base text-gray-500 dark:text-gray-400"><time pubdate title="">{{ $news->created_at->format('j F Y') }}</time></p>
                         </div>
                     </div>
                 </address>
                 </header>
-            <p class="lead dark:text-white">Flowbite is an open-source library of UI components built with the utility-first
-                classes from Tailwind CSS. It also includes interactive elements such as dropdowns, modals,
-                datepickers.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium esse natus, magnam architecto facere nobis nulla porro ducimus facilis tempore tenetur dolor quibusdam quis, ratione repudiandae recusandae quod earum et, qui nisi. Eveniet laborum quibusdam at sequi vel soluta laudantium numquam mollitia, consequuntur fugiat quam atque blanditiis rerum ut. Doloribus optio suscipit quod quasi, ipsa, quos eligendi pariatur nesciunt qui ab neque doloremque repudiandae libero quidem illum dicta odit aut nobis enim rem cumque accusamus repellat? Quo nostrum veritatis incidunt at magni explicabo dignissimos repudiandae quisquam officia, dolore harum sit id aperiam qui eius nihil culpa pariatur consequatur voluptas odit.
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil laborum inventore tenetur consequatur voluptatem! Rerum, adipisci. Inventore dolor, deserunt harum, labore cumque, dolorum ipsum voluptatem minus dicta maiores consequatur incidunt? Sequi eos porro odio, perferendis debitis cum sunt ex accusantium odit veniam eveniet laborum ab quidem maiores possimus? Ut, delectus.
+            <p class="lead dark:text-white">{{ $news->news }}
             </p>
             
             

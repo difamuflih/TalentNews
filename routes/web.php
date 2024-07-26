@@ -1,20 +1,24 @@
 <?php
 
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/', function () {
-    return view('user.home');
-});
+// Route::get('/{news:slug}', function (News $news) {
+//     return view('user.news', ['news' => $news]);
+// });
 
-Route::get('/news', function () {
-    return view('user.news');
-});
+Route::get('/news/{slug}', [NewsController::class, 'show'])->name('user.news');
+Route::get('/', [NewsController::class, 'home'])->name('user.home');
+
+// Route::get('/', function () {
+//     return view('user.home');
+// });
 
 Route::get('/category', function () {
     return view('category');
