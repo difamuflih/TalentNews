@@ -30,29 +30,37 @@ class RolePermissionSeeder extends Seeder
             'name' => 'user' 
         ]);
 
-        $user = User::create([
+        $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('123123123')
         ]);
 
-        $user->assignRole($adminRole);
+        $admin->assignRole($adminRole);
+        
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@user.com',
+            'password' => bcrypt('123123123')
+        ]);
+
+        $user->assignRole($userRole);
         
         $category = [[
             'category' => 'Sport',
             'slug' => Str::slug('Sport'),
             'about' => 'Kategori ini mencakup berita tentang pertandingan, turnamen, prestasi atlet, dan perkembangan terbaru dalam dunia olahraga.',
-            'icon' => 'sport.jpg',
+            // 'icon' => 'sport.jpg',
         ],[
             'category' => 'Education',
             'slug' => Str::slug('Education'),
             'about' => 'Kategori ini berfokus pada perkembangan pendidikan, kebijakan, inovasi pengajaran, beasiswa, dan teknologi pendidikan.',
-            'icon' => 'education.jpg',
+            // 'icon' => 'education.jpg',
         ],[
             'category' => 'Economy',
             'slug' => Str::slug('Economy'),
             'about' => 'Kategori ini meliputi berita tentang kebijakan ekonomi, pasar saham, inflasi, perdagangan, dan tren ekonomi global.',
-            'icon' => 'economy.jpg',
+            // 'icon' => 'economy.jpg',
         ]];
 
         foreach ($category as $categoryData) {

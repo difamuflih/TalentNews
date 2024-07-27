@@ -2,7 +2,7 @@
 
     <x-header></x-header>
 
-    <section class="bg-gray-10 dark:bg-gray-900 flex items-center">
+    <section class="bg-gray-100 dark:bg-gray-900 flex items-center">
         <div class="max-w-screen-xl px-4 mx-auto  w-full">
           <!-- Start coding here -->
           <div class=" sm:rounded-lg">
@@ -24,7 +24,7 @@
                     </form>
                 </div>
             </div>
-            <div class="self-center text-lg whitespace-nowrap dark:text-white">
+            <div class="self-center text-lg  dark:text-white">
                 {{ $categories->about }}
             </div>
           </div>
@@ -32,7 +32,7 @@
     </section>
     
     <section class=" bg-gray-100 dark:bg-gray-900 py-8 lg:py-16">
-        <div class="max-w-screen-xl items-center px-4 mx-auto w-full grid grid-cols-4 gap-4">
+        <div class="max-w-screen-xl items-center px-4 mx-auto w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4">
             
             @foreach ($newsItems as $news)
                 

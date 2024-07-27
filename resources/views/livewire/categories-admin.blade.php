@@ -36,7 +36,7 @@
                         </form>
                     </div>
                     <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                        <button  type="button" id="createProductButton" data-modal-toggle="createProductModal" class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        <button     type="button" id="createProductButton" data-modal-toggle="createProductModal" class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                             <svg class="h-3.5 w-3.5 mr-1.5 -ml-1" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                             </svg>
@@ -60,7 +60,7 @@
                             <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <td class="px-4 py-3">{{ $loop->iteration }}</td>
                                 <td class="px-4 py-3">{{ $category->category }}</td>
-                                <td class="px-4 py-3">{{ $category->updated_at }}</td>
+                                <td class="px-4 py-3">{{ $category->updated_at->format( 'd F Y' ) }}</td>
                                 <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     <div class="flex items-center space-x-4">
 
@@ -71,60 +71,16 @@
                                                 </svg>
                                                 Edit
                                             </button>
-                                        <button wire:click="confirmCategoryDeletion({{ $category->id }})" wire:loading.atr="disabled" type="button" data-modal-target="delete-modal" data-modal-toggle="delete-modal" class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                        <button wire:click="confirmCategoryDeletion({{ $category->id }})" wire:loading.atr="disabled" type="button"  class="flex items-center text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 -ml-0.5" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                                             </svg>
                                             Delete
                                         </button>
-                                        <button wire:click="$set('confirmingCategoryAdd', true)" class="bg-blue-500 text-white px-4 py-2 rounded">
-                                            Tambah Kategori
-                                        </button>
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
-
-
-
-
-                            
-                                
-                            
-                                <!-- Modal Form Tambah Kategori -->
-                                @if($confirmingCategoryAdd)
-                                    <div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
-                                        <div class="bg-white p-6 rounded-lg">
-                                            <h2 class="text-lg font-bold mb-4">Tambah Kategori Baru</h2>
-                            
-                                            <form wire:submit.prevent="saveCategory()">
-                                                <div class="mb-4">
-                                                    <label class="block text-gray-700">Nama Kategori:</label>
-                                                    <input type="text" wire:model="category.name" class="w-full px-4 py-2 border rounded">
-                                                    @error('category.name') <span class="text-red-500">{{ $message }}</span> @enderror
-                                                </div>
-                            
-                                                <div class="mb-4">
-                                                    <label class="block text-gray-700">Ikon:</label>
-                                                    <input type="text" wire:model="category.icon" class="w-full px-4 py-2 border rounded">
-                                                    @error('category.icon') <span class="text-red-500">{{ $message }}</span> @enderror
-                                                </div>
-                            
-                                                <div class="flex justify-end">
-                                                    <button type="button" wire:click="$set('confirmingCategoryAdd', false)" class="bg-gray-500 text-white px-4 py-2 rounded mr-2">
-                                                        Batal
-                                                    </button>
-                                                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">
-                                                        Simpan
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @endif
-
-                                
-
 
 
                         </tbody>
@@ -175,7 +131,7 @@
         {{-- </div> --}}
     {{-- </section> --}}
 <!-- Create modal -->
-<div wire:model='canfirmingCategoryAdd' id="createProductModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div wire:model="showModal" id="createProductModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -190,26 +146,22 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#">
+            <form wire:submit.prevent="addCategory">
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div class="sm:col-span-2">
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                        <input wire:model.defer='category.category' type="text" name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Type product category" required="">                        
+                        <input wire:model.defer='category.category' type="text" name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="category" required="">                        
                     </div>
-                    <div class="sm:col-span-2">
+                    {{-- <div class="sm:col-span-2">
                         <label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Icon</label>
                         <input wire:model.defer='category.icon' type="file" name="icon" id="icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder="Upload icon" required="">
-                    </div> 
-                    {{-- <div class="sm:col-span-2">
-                        <x-jet-label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" value="{{ __('name') }}"/>
-                        <x-jet-input wire:model.defer='category.icon' type="file" name="icon" id="icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder="Upload icon" required="">
-                    </div> 
-                    <div class="sm:col-span-2">
-                        <x-jet-label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" value="{{ __('icon') }}"/>
-                        <x-jet-input wire:model.defer='category.icon' type="file" name="icon" id="icon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 " placeholder="Upload icon" required="">
                     </div>  --}}
+                    <div class="sm:col-span-2">
+                        <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">About</label>
+                        <textarea wire:model.defer='category.about' type="text" name="about" id="about" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="about" required=""></textarea>                        
+                    </div>
                 </div>
-                <button wire:click="store()" type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                <button wire:click="addCategory()" aria-hidden="true" type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                     <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                     </svg>
@@ -259,7 +211,7 @@
         </div>
     </div>
 </div>
-<!-- Delete Modal -->
+{{-- <!-- Delete Modal -->
     <div id="delete-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full h-auto max-w-md max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -279,7 +231,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     
 </div>
 

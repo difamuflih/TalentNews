@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class News extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','category_id','news','photo'];
+    protected $fillable = ['title','category_id','news','photo', 'slug', 'user_id'];
 
     public function categories (): BelongsTo
     {

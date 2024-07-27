@@ -9,7 +9,7 @@
         <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             
             <div class="mb-10">
-                <a href="/categories/{{ $news->categories->slug }} " rel="author" class="rounded-md p-3 bg-blue-500 dark:bg-white text-md font-bold dark:text-gray-900 text-white">{{ $news->categories->category }}</a>
+                <a href="/categories/{{ $news->categories->slug }} " rel="author" class="rounded-md p-3 bg-blue-600 dark:bg-white text-md font-bold dark:text-gray-900 text-white">{{ $news->categories->category }}</a>
             </div>
             <figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png" alt="">
             </figure>

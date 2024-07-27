@@ -3,6 +3,7 @@
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 
 // Route::get('/', function () {
@@ -60,21 +61,15 @@ Route::middleware([
     'verified',
     // 'role:admin',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/user', [AdminController::class, 'user'])->name('user');
+    Route::get('/news', [AdminController::class, 'news'])->name('news');
+    Route::get('/category', [AdminController::class, 'category'])->name('category');
 
     // Route::prefix('admin')->name('admin.')->group(function(){
-    //     Route::resource('categories', CategoryController::class)->middleware('role:admin');
+    //     Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware('role:admin');
+    //     Route::get('/user', [AdminController::class, 'user'])->middleware('role:admin');
+    //     Route::get('/news', [AdminController::class, 'news'])->middleware('role:admin');
+    //     Route::get('/category', [AdminController::class, 'category'])->middleware('role:admin');
     // });
-
-    Route::get('/user', function () {
-        return view('admin.user');
-    })->name('user');
-    Route::get('/news', function () {
-        return view('admin.news');
-    })->name('news');
-    Route::get('/category', function () {
-        return view('admin.category');
-    })->name('category');
 });

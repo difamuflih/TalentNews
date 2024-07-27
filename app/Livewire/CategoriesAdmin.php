@@ -15,18 +15,16 @@ class CategoriesAdmin extends Component
 {
     use WithPagination;
 
-    // public $category;
+    public $showModal = false;
     public $category = [
-        'name' => '',
-        'icon' => '',
+        'category' => '',
+        'about' => '',
     ];
 
-
-    public $confirmingCategoryAdd = false;
-
     protected $rules = [
-        'category.category' => "Required|string|min:4",
-        'category.icon' => "Required|png,svg,jpg|min:4",
+        'category.category' => "Required|string|max:25",
+        'category.about' => "Required|string|max:255",
+        // 'category.icon' => "Required|png,svg,jpg|min:4",
     ];
     
     public function render()
@@ -44,54 +42,25 @@ class CategoriesAdmin extends Component
         $category->delete();
         // $this->confirmingUserDeletion = $id;
     }
-    
-    public function confirmCategoryAdd()
-    {
 
-        $this->reset(['item']);
-        $this->confirmingCategoryAdd = true;
-    }
+    // public function showingModal(){
+    //     $this->showModal = true;
+    // }
 
-    public function saveCategory(){
-        $this->validate();
+    public function addCategory(){
+        $validatedData = $this->validate();
+
+        $slug = Str::slug($validatedData['category']['category']);
 
         Category::create([
             'category' => $this->category['category'],
-            'icon' => $this->category['icon'],
+            'about' => $this->category['about'],
+            'slug' => $slug,
+            // 'icon' => $this->category['icon'],
         ]);
 
-        $this->confirmingCategoryAdd = false;  
-    }
-
-    public function store(Request $request)
-    {
-        //
-        $validated = $request->validate([
-        'category' => "Required|string|min:4",
-        'icon' => "Required|png,svg,jpg|min:4",
-        ]);
-
-        DB::transaction();
-
-        try{
-            if($request->hasFile('icon')){
-                $iconPath = $request->file('icon')->strore('category_icons', 'public');
-                $validated['icon'] = $iconPath;
-            }
-            $validated['slug'] = Str::slug($request->category);
-            $newCategory = Category::create($validated);
-
-            DB::commit();
-
-            return redirect()->route('admin.category');
-        } catch(\Exception $e){
-            DB::rollBack();
-            $error = ValidationException::withMessages([
-                'system_error' => ['System error!' . $e->getMessage()],
-            ]);
-            throw $error;
-        }
-        
+        $this->reset('category');
+        // $this->showModal = false;
     }
 
 }

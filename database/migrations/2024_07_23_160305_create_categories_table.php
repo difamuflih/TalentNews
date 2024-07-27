@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('slug');
             $table->text('about');
-            $table->string('icon');
+            // $table->string('icon');
             $table->timestamps();
         });
     }

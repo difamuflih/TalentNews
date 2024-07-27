@@ -29,36 +29,36 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
-        $validated = $request->validate([
-        'category' => "Required|string|min:4",
-        'icon' => "Required|png,svg,jpg|min:4",
-        ]);
+    // public function store(Request $request)
+    // {
+    //     //
+    //     $validated = $request->validate([
+    //     'category' => "Required|string|min:4",
+    //     'icon' => "Required|png,svg,jpg|min:4",
+    //     ]);
 
-        DB::transaction();
+    //     DB::transaction();
 
-        try{
-            if($request->hasFile('icon')){
-                $iconPath = $request->file('icon')->strore('category_icons', 'public');
-                $validated['icon'] = $iconPath;
-            }
-            $validated['slug'] = Str::slug($request->category);
-            $newCategory = Category::create($validated);
+    //     try{
+    //         if($request->hasFile('icon')){
+    //             $iconPath = $request->file('icon')->strore('category_icons', 'public');
+    //             $validated['icon'] = $iconPath;
+    //         }
+    //         $validated['slug'] = Str::slug($request->category);
+    //         $newCategory = Category::create($validated);
 
-            DB::commit();
+    //         DB::commit();
 
-            return redirect()->route('admin.category');
-        } catch(\Exception $e){
-            DB::rollBack();
-            $error = ValidationException::withMessages([
-                'system_error' => ['System error!' . $e->getMessage()],
-            ]);
-            throw $error;
-        }
+    //         return redirect()->route('admin.category');
+    //     } catch(\Exception $e){
+    //         DB::rollBack();
+    //         $error = ValidationException::withMessages([
+    //             'system_error' => ['System error!' . $e->getMessage()],
+    //         ]);
+    //         throw $error;
+    //     }
         
-    }
+    // }
 
     /**
      * Display the specified resource.

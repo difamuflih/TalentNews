@@ -68,12 +68,6 @@
                                             </svg>
                                             Delete
                                         </button>
-                                        
-                                        <x-danger-button wire:click="confirmUserDeletion({{ $user->id }})" wire:loading.attr="disabled">
-                                            {{ __('Delete User') }}
-                                        </x-danger-button>
-
-                                        
                                     </div>
                                 </td>
                             </tr>
